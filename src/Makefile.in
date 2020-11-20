@@ -91,7 +91,7 @@ proto.h: $(GEN_SRCS)
 	awk -f mkproto.awk $(GEN_SRCS) > proto.h
 
 parsers/parse_info.h: $(shell /bin/ls *.h | sed s/proto.h//g)
-	parsers/genstruct.pl -o parsers/parse_info.h $(CC) -E $(CFLAGS) includes.h
+	parsers/genstruct.pl -o parsers/parse_info.h $(CC) -E -O2 -g includes.h
 
 clean: 
 	rm -f *.o $(OBJS) ${ALL} *~ vers.c proto.h parsers/parse_info.h .autoheaders
